@@ -78,17 +78,33 @@ Public Class StansGroceryForm
             FilterComboBox.Sorted = True
             For Each item As String In productsList
                 temp = Split(item, ",")
-                If Not FilterComboBox.Items.Contains((temp(filterOption)).TrimStart) Then
-                    FilterComboBox.Items.Add((temp(filterOption)).TrimStart)
+                If Not FilterComboBox.Items.Contains((temp(2)).TrimStart) Then
+                    FilterComboBox.Items.Add((temp(2)).TrimStart)
                 End If
             Next
 
         ElseIf filterOption = 2 Then
-                    For Each item In productsList
+            For Each item In productsList
                 temp = Split(item, ",")
                 FilterComboBox.Items.Add(temp(0))
             Next
         End If
+    End Sub
+    Sub searchingProduct()
+        Dim temp() As String
+        If SearchTextBox.Text = "" Then
+            FillingListBox()
+            FilteringComboBox()
+            DisplayLabel.Text = "Please, enter the product name that you are looking for"
+        Else
+            For Each matchingItem As String In productsList
+                temp = Split(matchingItem, ",")
+                If temp(0).StartsWith(SearchTextBox.Text, StringComparison.CurrentCultureIgnoreCase) Then
+                    DisplayListBox.Items.Add(temp(0))
+                End If
+            Next
+        End If
+
     End Sub
     Private Sub StansGroceryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'd()
@@ -101,5 +117,10 @@ Public Class StansGroceryForm
 
     Private Sub FilterByCategoryRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles FilterByCategoryRadioButton.CheckedChanged
         FilteringComboBox()
+    End Sub
+
+    Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
+        DisplayListBox.Items.Clear()
+        searchingProduct()
     End Sub
 End Class

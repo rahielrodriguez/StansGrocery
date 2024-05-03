@@ -126,7 +126,7 @@ Partial Class StansGroceryForm
         Me.TopMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.TopMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.TopMenuStrip.Name = "TopMenuStrip"
-        Me.TopMenuStrip.Size = New System.Drawing.Size(732, 28)
+        Me.TopMenuStrip.Size = New System.Drawing.Size(732, 30)
         Me.TopMenuStrip.TabIndex = 6
         Me.TopMenuStrip.Text = "TopMenuStrip"
         '
