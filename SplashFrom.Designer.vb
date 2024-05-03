@@ -29,7 +29,7 @@ Partial Class SplashFrom
         'SplashTimer
         '
         Me.SplashTimer.Enabled = True
-        Me.SplashTimer.Interval = 20000
+        Me.SplashTimer.Interval = 2000
         '
         'SplashFrom
         '
@@ -37,7 +37,7 @@ Partial Class SplashFrom
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.StansGrocery.My.Resources.Resources.Stan_s_Grocery_Splash_Screen
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(450, 450)
+        Me.ClientSize = New System.Drawing.Size(587, 549)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "SplashFrom"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
