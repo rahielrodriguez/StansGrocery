@@ -50,7 +50,7 @@ Partial Class StansGroceryForm
         '
         Me.SearchTextBox.Location = New System.Drawing.Point(26, 33)
         Me.SearchTextBox.Name = "SearchTextBox"
-        Me.SearchTextBox.Size = New System.Drawing.Size(162, 22)
+        Me.SearchTextBox.Size = New System.Drawing.Size(239, 22)
         Me.SearchTextBox.TabIndex = 0
         '
         'SearchButton
@@ -67,7 +67,7 @@ Partial Class StansGroceryForm
         Me.FilterComboBox.FormattingEnabled = True
         Me.FilterComboBox.Location = New System.Drawing.Point(26, 81)
         Me.FilterComboBox.Name = "FilterComboBox"
-        Me.FilterComboBox.Size = New System.Drawing.Size(162, 24)
+        Me.FilterComboBox.Size = New System.Drawing.Size(239, 24)
         Me.FilterComboBox.TabIndex = 2
         '
         'DisplayListBox
@@ -103,10 +103,10 @@ Partial Class StansGroceryForm
         Me.FilterByCategoryRadioButton.AutoSize = True
         Me.FilterByCategoryRadioButton.Location = New System.Drawing.Point(10, 72)
         Me.FilterByCategoryRadioButton.Name = "FilterByCategoryRadioButton"
-        Me.FilterByCategoryRadioButton.Size = New System.Drawing.Size(128, 20)
+        Me.FilterByCategoryRadioButton.Size = New System.Drawing.Size(134, 20)
         Me.FilterByCategoryRadioButton.TabIndex = 1
         Me.FilterByCategoryRadioButton.TabStop = True
-        Me.FilterByCategoryRadioButton.Text = "FilterByCategory"
+        Me.FilterByCategoryRadioButton.Text = "Filter By Category"
         Me.FilterByCategoryRadioButton.UseVisualStyleBackColor = True
         '
         'FilterByAisleRadioButton
@@ -114,10 +114,10 @@ Partial Class StansGroceryForm
         Me.FilterByAisleRadioButton.AutoSize = True
         Me.FilterByAisleRadioButton.Location = New System.Drawing.Point(10, 27)
         Me.FilterByAisleRadioButton.Name = "FilterByAisleRadioButton"
-        Me.FilterByAisleRadioButton.Size = New System.Drawing.Size(103, 20)
+        Me.FilterByAisleRadioButton.Size = New System.Drawing.Size(109, 20)
         Me.FilterByAisleRadioButton.TabIndex = 0
         Me.FilterByAisleRadioButton.TabStop = True
-        Me.FilterByAisleRadioButton.Text = "FilterByAisle"
+        Me.FilterByAisleRadioButton.Text = "Filter By Aisle"
         Me.FilterByAisleRadioButton.UseVisualStyleBackColor = True
         '
         'TopMenuStrip
