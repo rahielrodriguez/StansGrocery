@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 Option Compare Text
+Imports System.CodeDom.Compiler
 Imports System.Diagnostics.Eventing.Reader
 Imports System.Net.Security
 
@@ -8,7 +9,7 @@ Public Class StansGroceryForm
 
     Dim productsList As New List(Of String)
     Sub d()
-        FilterByCategoryRadioButton.Checked = True
+        FilterByAisleRadioButton.Checked = True
     End Sub
     Sub ReadingProductsFile()
         Dim products As String
@@ -78,7 +79,7 @@ Public Class StansGroceryForm
             FilterComboBox.Sorted = True
             For Each item As String In productsList
                 temp = Split(item, ",")
-                If Not FilterComboBox.Items.Contains((temp(2)).TrimStart) Then
+                If FilterComboBox.Items.Contains((temp(2)).TrimStart) = False Then
                     FilterComboBox.Items.Add((temp(2)).TrimStart)
                 End If
             Next
@@ -106,6 +107,47 @@ Public Class StansGroceryForm
         End If
 
     End Sub
+    Sub DisplayingWFilteringOn()
+        Dim temp() As String
+        Dim filterOption As Integer
+
+        If FilterByAisleRadioButton.Checked Then
+            filterOption = 0
+        ElseIf FilterByCategoryRadioButton.Checked Then
+            filterOption = 1
+        Else
+            filterOption = 2
+        End If
+
+        Select Case filterOption
+            Case 0
+                DisplayListBox.Items.Clear()
+                For Each filteringSelection As String In productsList
+                    temp = Split(filteringSelection, ",")
+                    If temp(1).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                        DisplayListBox.Items.Add(temp(0))
+                    End If
+                Next
+            Case 1
+                DisplayListBox.Items.Clear()
+                For Each filteringSelection As String In productsList
+                        temp = Split(filteringSelection, ",")
+                        If temp(2).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                            DisplayListBox.Items.Add(temp(0))
+                        End If
+                    Next
+            Case 2
+                DisplayListBox.Items.Clear()
+                For Each filteringSelection As String In productsList
+                        temp = Split(filteringSelection, ",")
+                        If temp(0).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                            DisplayListBox.Items.Add(temp(0))
+                        End If
+                    Next
+
+            End Select
+
+    End Sub
     Private Sub StansGroceryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'd()
         ReadingProductsFile()
@@ -122,5 +164,9 @@ Public Class StansGroceryForm
     Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
         DisplayListBox.Items.Clear()
         searchingProduct()
+    End Sub
+
+    Private Sub FilterComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterComboBox.SelectedIndexChanged
+        DisplayingWFilteringOn()
     End Sub
 End Class

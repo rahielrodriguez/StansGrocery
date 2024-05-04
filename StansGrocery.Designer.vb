@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class StansGroceryForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class StansGroceryForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.SearchTextBox = New System.Windows.Forms.TextBox()
@@ -41,6 +41,7 @@ Partial Class StansGroceryForm
         Me.SearchToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.FilterGroupBox.SuspendLayout()
         Me.TopMenuStrip.SuspendLayout()
         Me.ContextMenuStrip.SuspendLayout()
@@ -126,7 +127,7 @@ Partial Class StansGroceryForm
         Me.TopMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.TopMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.TopMenuStrip.Name = "TopMenuStrip"
-        Me.TopMenuStrip.Size = New System.Drawing.Size(732, 30)
+        Me.TopMenuStrip.Size = New System.Drawing.Size(732, 28)
         Me.TopMenuStrip.TabIndex = 6
         Me.TopMenuStrip.Text = "TopMenuStrip"
         '
@@ -134,7 +135,7 @@ Partial Class StansGroceryForm
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 24)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(46, 26)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'SearchToolStripMenuItem
@@ -153,7 +154,7 @@ Partial Class StansGroceryForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(55, 26)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
@@ -181,12 +182,22 @@ Partial Class StansGroceryForm
         Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(122, 24)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 16
+        Me.ListBox1.Location = New System.Drawing.Point(271, 45)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(430, 68)
+        Me.ListBox1.TabIndex = 7
+        '
         'StansGroceryForm
         '
         Me.AcceptButton = Me.SearchButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(732, 503)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.FilterGroupBox)
         Me.Controls.Add(Me.DisplayLabel)
         Me.Controls.Add(Me.DisplayListBox)
@@ -226,4 +237,5 @@ Partial Class StansGroceryForm
     Friend WithEvents SearchToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents MainToolTip As ToolTip
+    Friend WithEvents ListBox1 As ListBox
 End Class
