@@ -65,31 +65,31 @@ Public Class StansGroceryForm
             filterOption = 2
         End If
 
-        If filterOption = 0 Then
-            FilterComboBox.Items.Clear()
-            FilterComboBox.Sorted = False
+        Select Case filterOption
+            Case 0
+                FilterComboBox.Items.Clear()
+                FilterComboBox.Sorted = False
 
-            For aisle = 17 To 2 Step -1
-                FilterComboBox.Items.Add(CStr(aisle))
-            Next
-            FilterComboBox.Items.Add(CStr(0))
+                For aisle = 17 To 2 Step -1
+                    FilterComboBox.Items.Add(CStr(aisle))
+                Next
+                FilterComboBox.Items.Add(CStr(0))
+            Case 1
+                FilterComboBox.Items.Clear()
+                FilterComboBox.Sorted = True
+                For Each item As String In productsList
+                    temp = Split(item, ",")
+                    If FilterComboBox.Items.Contains((temp(2)).TrimStart) = False Then
+                        FilterComboBox.Items.Add((temp(2)).TrimStart)
+                    End If
+                Next
+            Case 2
+                For Each item In productsList
+                    temp = Split(item, ",")
+                    FilterComboBox.Items.Add(temp(0))
+                Next
+        End Select
 
-        ElseIf filterOption = 1 Then
-            FilterComboBox.Items.Clear()
-            FilterComboBox.Sorted = True
-            For Each item As String In productsList
-                temp = Split(item, ",")
-                If FilterComboBox.Items.Contains((temp(2)).TrimStart) = False Then
-                    FilterComboBox.Items.Add((temp(2)).TrimStart)
-                End If
-            Next
-
-        ElseIf filterOption = 2 Then
-            For Each item In productsList
-                temp = Split(item, ",")
-                FilterComboBox.Items.Add(temp(0))
-            Next
-        End If
     End Sub
     Sub searchingProduct()
         Dim temp() As String
