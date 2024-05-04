@@ -61,6 +61,8 @@ Public Class StansGroceryForm
             filterOption = 0
         ElseIf FilterByCategoryRadioButton.Checked Then
             filterOption = 1
+        ElseIf AllItemsRadioButton.Checked Then
+            filterOption = 2
         Else
             filterOption = 2
         End If
@@ -101,6 +103,7 @@ Public Class StansGroceryForm
             For Each matchingItem As String In productsList
                 temp = Split(matchingItem, ",")
                 If temp(0).StartsWith(SearchTextBox.Text, StringComparison.CurrentCultureIgnoreCase) Then
+                    DisplayLabel.Text = ""
                     DisplayListBox.Items.Add(temp(0))
                 End If
             Next
@@ -114,6 +117,8 @@ Public Class StansGroceryForm
             filterOption = 0
         ElseIf FilterByCategoryRadioButton.Checked Then
             filterOption = 1
+        ElseIf AllItemsRadioButton.Checked Then
+            filterOption = 2
         Else
             filterOption = 2
         End If
@@ -160,14 +165,13 @@ Public Class StansGroceryForm
                     DisplayLabel.Text = $"{temp(0).TrimStart} is on Aisle #{temp(1).TrimStart}, in the {temp(2).TrimStart} section"
                 End If
             Catch ex As Exception
-
             End Try
         Next
 
     End Sub
     Private Sub StansGroceryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'd()
-        DisplayLabel.Text = ""
+        DisplayLabel.Text = "Welcome to Stan's Grocery! Enter the name of the product that your looking for"
         ReadingProductsFile()
     End Sub
 
@@ -179,9 +183,10 @@ Public Class StansGroceryForm
         FilteringComboBox()
     End Sub
 
-    Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
+    Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click, SearchToolStripMenuItem.Click, SearchToolStripMenuItem1.Click
         DisplayListBox.Items.Clear()
         searchingProduct()
+
     End Sub
 
     Private Sub FilterComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterComboBox.SelectedIndexChanged
@@ -195,6 +200,24 @@ Public Class StansGroceryForm
 
     Private Sub DisplayListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DisplayListBox.SelectedIndexChanged
         DisplayProductMessage()
+    End Sub
 
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click, ExitToolStripMenuItem1.Click
+        If MsgBox("Are you sure you want to exit?", MsgBoxStyle.YesNo, "Confirm Exit") = vbYes Then
+            Me.Close()
+        Else
+
+        End If
+    End Sub
+
+    Private Sub SearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles SearchTextBox.TextChanged
+        If SearchTextBox.Text = "zzz" Then
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        MsgBox("Stan's Grocery Search Program is an application designed to help customers locate items within Stan's grocery store. 
+The program allows users to search for items by typing their name into a search text box, selecting them from a combo box, or choosing from a list box.")
     End Sub
 End Class
