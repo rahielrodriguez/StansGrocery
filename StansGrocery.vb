@@ -1,10 +1,11 @@
-﻿Option Strict On
+﻿'Rahiel Rodriguez
+'RCET 0265
+'Spring 2024
+'Stan's Grocety
+'https://github.com/rahielrodriguez/StansGrocery.git
+Option Strict On
 Option Explicit On
 Option Compare Text
-Imports System.CodeDom.Compiler
-Imports System.Diagnostics.Eventing.Reader
-Imports System.Net.Security
-
 Public Class StansGroceryForm
 
     Dim productsList As New List(Of String)
@@ -123,34 +124,40 @@ Public Class StansGroceryForm
             filterOption = 2
         End If
 
-        Select Case filterOption
-            Case 0
-                DisplayListBox.Items.Clear()
-                For Each filteringSelection As String In productsList
-                    temp = Split(filteringSelection, ",")
-                    If temp(1).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
-                        DisplayListBox.Items.Add(temp(0))
-                    End If
-                Next
-            Case 1
-                DisplayListBox.Items.Clear()
-                For Each filteringSelection As String In productsList
-                    temp = Split(filteringSelection, ",")
-                    If temp(2).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
-                        DisplayListBox.Items.Add(temp(0))
-                    End If
-                Next
-            Case 2
-                DisplayListBox.Items.Clear()
-                For Each filteringSelection As String In productsList
-                    temp = Split(filteringSelection, ",")
-                    If temp(0).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
-                        DisplayListBox.Items.Add(temp(0))
-                    End If
-                Next
-
-        End Select
-
+        If AllItemsRadioButton.Checked Then
+            For Each filteringSelection As String In productsList
+                temp = Split(filteringSelection, ",")
+                If temp(0).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                    DisplayListBox.Items.Add(temp(0))
+                End If
+            Next
+        Else
+            Select Case filterOption
+                Case 0
+                    DisplayListBox.Items.Clear()
+                    For Each filteringSelection As String In productsList
+                        temp = Split(filteringSelection, ",")
+                        If temp(1).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                            DisplayListBox.Items.Add(temp(0))
+                        End If
+                    Next
+                Case 1
+                    DisplayListBox.Items.Clear()
+                    For Each filteringSelection As String In productsList
+                        temp = Split(filteringSelection, ",")
+                        If temp(2).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                            DisplayListBox.Items.Add(temp(0))
+                        End If
+                    Next
+                Case 2
+                    For Each filteringSelection As String In productsList
+                        temp = Split(filteringSelection, ",")
+                        If temp(0).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                            DisplayListBox.Items.Add(temp(0))
+                        End If
+                    Next
+            End Select
+        End If
     End Sub
     Sub DisplayProductMessage()
 
