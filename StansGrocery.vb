@@ -8,7 +8,6 @@ Imports System.Net.Security
 Public Class StansGroceryForm
 
     Dim productsList As New List(Of String)
-    Dim successfulSearch As Boolean
     Sub d()
         FilterByAisleRadioButton.Checked = True
     End Sub
@@ -98,14 +97,12 @@ Public Class StansGroceryForm
             FillingListBox()
             FilteringComboBox()
             DisplayLabel.Text = "Please, enter the product name that you are looking for"
-            successfulSearch = False
         Else
             For Each matchingItem As String In productsList
                 temp = Split(matchingItem, ",")
                 If temp(0).StartsWith(SearchTextBox.Text, StringComparison.CurrentCultureIgnoreCase) Then
                     DisplayListBox.Items.Add(temp(0))
                 End If
-                successfulSearch = True
             Next
         End If
     End Sub
@@ -155,13 +152,22 @@ Public Class StansGroceryForm
         Dim temp() As String
         DisplayLabel.Visible = True
         DisplayLabel.Text = ""
-        If successfulSearch Then
-            temp = Split(FilterComboBox.Text, ",")
-            DisplayLabel.Text = $"{temp(0).TrimStart} is on Aisle #{temp(1).TrimStart}, in the {temp(2).TrimStart} section"
-        End If
+
+        For Each matchingProduct As String In productsList
+            temp = Split(matchingProduct, ",")
+            Try
+                If temp(0).StartsWith(CStr(DisplayListBox.SelectedItem)) Then
+                    DisplayLabel.Text = $"{temp(0).TrimStart} is on Aisle #{temp(1).TrimStart}, in the {temp(2).TrimStart} section"
+                End If
+            Catch ex As Exception
+
+            End Try
+        Next
+
     End Sub
     Private Sub StansGroceryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'd()
+        DisplayLabel.Text = ""
         ReadingProductsFile()
     End Sub
 
@@ -179,7 +185,12 @@ Public Class StansGroceryForm
     End Sub
 
     Private Sub FilterComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterComboBox.SelectedIndexChanged
+        If FilterByAisleRadioButton.Checked = False And FilterByCategoryRadioButton.Checked = False Then
+            FillingListBox()
+            DisplayListBox.SelectedIndex = FilterComboBox.SelectedIndex
+        End If
         DisplayingWFilteringOn()
+
     End Sub
 
     Private Sub DisplayListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DisplayListBox.SelectedIndexChanged
