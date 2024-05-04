@@ -8,6 +8,7 @@ Imports System.Net.Security
 Public Class StansGroceryForm
 
     Dim productsList As New List(Of String)
+    Dim successfulSearch As Boolean
     Sub d()
         FilterByAisleRadioButton.Checked = True
     End Sub
@@ -97,15 +98,16 @@ Public Class StansGroceryForm
             FillingListBox()
             FilteringComboBox()
             DisplayLabel.Text = "Please, enter the product name that you are looking for"
+            successfulSearch = False
         Else
             For Each matchingItem As String In productsList
                 temp = Split(matchingItem, ",")
                 If temp(0).StartsWith(SearchTextBox.Text, StringComparison.CurrentCultureIgnoreCase) Then
                     DisplayListBox.Items.Add(temp(0))
                 End If
+                successfulSearch = True
             Next
         End If
-
     End Sub
     Sub DisplayingWFilteringOn()
         Dim temp() As String
@@ -131,22 +133,32 @@ Public Class StansGroceryForm
             Case 1
                 DisplayListBox.Items.Clear()
                 For Each filteringSelection As String In productsList
-                        temp = Split(filteringSelection, ",")
-                        If temp(2).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
-                            DisplayListBox.Items.Add(temp(0))
-                        End If
-                    Next
+                    temp = Split(filteringSelection, ",")
+                    If temp(2).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                        DisplayListBox.Items.Add(temp(0))
+                    End If
+                Next
             Case 2
                 DisplayListBox.Items.Clear()
                 For Each filteringSelection As String In productsList
-                        temp = Split(filteringSelection, ",")
-                        If temp(0).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
-                            DisplayListBox.Items.Add(temp(0))
-                        End If
-                    Next
+                    temp = Split(filteringSelection, ",")
+                    If temp(0).TrimStart.StartsWith(CStr(FilterComboBox.SelectedItem)) Then
+                        DisplayListBox.Items.Add(temp(0))
+                    End If
+                Next
 
-            End Select
+        End Select
 
+    End Sub
+    Sub DisplayProductMessage()
+
+        Dim temp() As String
+        DisplayLabel.Visible = True
+        DisplayLabel.Text = ""
+        If successfulSearch Then
+            temp = Split(FilterComboBox.Text, ",")
+            DisplayLabel.Text = $"{temp(0).TrimStart} is on Aisle #{temp(1).TrimStart}, in the {temp(2).TrimStart} section"
+        End If
     End Sub
     Private Sub StansGroceryForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'd()
@@ -168,5 +180,10 @@ Public Class StansGroceryForm
 
     Private Sub FilterComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterComboBox.SelectedIndexChanged
         DisplayingWFilteringOn()
+    End Sub
+
+    Private Sub DisplayListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DisplayListBox.SelectedIndexChanged
+        DisplayProductMessage()
+
     End Sub
 End Class

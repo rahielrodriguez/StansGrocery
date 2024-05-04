@@ -41,7 +41,7 @@ Partial Class StansGroceryForm
         Me.SearchToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.FilterGroupBox.SuspendLayout()
         Me.TopMenuStrip.SuspendLayout()
         Me.ContextMenuStrip.SuspendLayout()
@@ -182,14 +182,12 @@ Partial Class StansGroceryForm
         Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(122, 24)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
-        'ListBox1
+        'TextBox1
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 16
-        Me.ListBox1.Location = New System.Drawing.Point(271, 45)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(430, 68)
-        Me.ListBox1.TabIndex = 7
+        Me.TextBox1.Location = New System.Drawing.Point(426, 51)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(183, 22)
+        Me.TextBox1.TabIndex = 7
         '
         'StansGroceryForm
         '
@@ -197,7 +195,7 @@ Partial Class StansGroceryForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(732, 503)
-        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.FilterGroupBox)
         Me.Controls.Add(Me.DisplayLabel)
         Me.Controls.Add(Me.DisplayListBox)
@@ -237,5 +235,5 @@ Partial Class StansGroceryForm
     Friend WithEvents SearchToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents MainToolTip As ToolTip
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents TextBox1 As TextBox
 End Class
